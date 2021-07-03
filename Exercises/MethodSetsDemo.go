@@ -20,6 +20,7 @@ p:=person{
 	fname: "Nimesh",
 	lname: "Johari",
 }
+//Although p is not a pointer the internal mechnaism of the lang. Allows this 
 p.SayHello()
 getInformation(&p)
 }
