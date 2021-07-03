@@ -6,7 +6,6 @@ import (
 	"sync"
 )
 
-
 func main() {
 	counter:=0
 	gr:=40
@@ -14,18 +13,14 @@ func main() {
 	wg.Add(gr)
 	fmt.Print("\tGo Routines\t",runtime.NumGoroutine())
 	fmt.Println("\n CPUS\t",runtime.NumCPU())
-	var mu sync.Mutex
 	for i := 0; i < gr; i++ {
-		mu.Lock()
 		go func(){
 			v:=counter
 			// time.Sleep(time.Second*3)
 			runtime.Gosched()
 			v++
 			counter=v
-			mu.Unlock()
 			wg.Done()
-
 		}()
 	}
 	wg.Wait()
